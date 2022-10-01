@@ -14,6 +14,39 @@ const end = section.querySelector("h1");
 //SCROLLMAGIC
 const controller = new ScrollMagic.Controller();
 
+var beepOne = $("#beep")[0];
+var beepOne1 = $("#beep1")[0];
+var beepOne2 = $("#beep2")[0];
+var beepOne3 = $("#beep3")[0];
+var beepOne4 = $("#beep4")[0];
+var beepOne5 = $("#beep5")[0];
+$(".wrapper").click(function(){
+beepOne.play();
+document.getElementById("openme").style.display = "block";
+const m = document.querySelector('.wrapper');
+m.classList.add('animate__animated', 'animate__flipOutY');
+});
+$(".wrapper1").mouseenter(function(){beepOne1.play();});
+$(".wrapper2").mouseenter(function(){beepOne2.play();});
+$(".wrapper3").mouseenter(function(){beepOne3.play();});
+$(".wrapper4").mouseenter(function(){beepOne4.play();});
+$(".wrapper5").mouseenter(function(){beepOne5.play();});
+
+var audio = document.getElementById("beep");
+ audio.volume = 0.4;
+ var audio1 = document.getElementById("beep1");
+  audio1.volume = 0.4;
+  var audio2 = document.getElementById("beep2");
+   audio2.volume = 0.4;
+   var audio3 = document.getElementById("beep3");
+    audio3.volume = 0.4;
+    var audio4 = document.getElementById("beep4");
+     audio4.volume = 0.4;
+     var audio5 = document.getElementById("beep5");
+      audio5.volume = 0.4;
+
+
+
 //Scenes
 let scene = new ScrollMagic.Scene({
   duration: 8000,
