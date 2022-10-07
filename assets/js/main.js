@@ -3,7 +3,85 @@
 * Template URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
-*/
+*/  // Back to top button
+
+
+const animateCSS = (element, animation, prefix = 'animate__') =>
+  // We create a Promise and return it
+  new Promise((resolve, reject) => {
+    const animationName = `${prefix}${animation}`;
+    const node = document.querySelector(element);
+
+    node.classList.add(`${prefix}animated`, animationName);
+
+    // When the animation ends, we clean the classes and resolve the Promise
+    function handleAnimationEnd(event) {
+      event.stopPropagation();
+      node.classList.remove(`${prefix}animated`, animationName);
+      resolve('Animation ended');
+    }
+
+    node.addEventListener('animationend', handleAnimationEnd, {once: true});
+  });
+
+  const animateCSS1 = (element, animation, prefix = 'animate__') =>
+    // We create a Promise and return it
+    new Promise((resolve, reject) => {
+      const animationName = `${prefix}${animation}`;
+      const node = document.querySelector(element);
+
+      node.classList.add(`${prefix}animated`, animationName);
+
+      // When the animation ends, we clean the classes and resolve the Promise
+      function handleAnimationEnd(event) {
+        event.stopPropagation();
+        node.classList.remove(`${prefix}animated`, animationName);
+        resolve('Animation ended');
+      }
+
+      node.addEventListener('animationend', handleAnimationEnd, {once: true});
+    });
+
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+    }
+  });
+
+  $('.back-to-top').click(function() {
+animateCSS('.zx', 'fadeOutUp');
+    animateCSS('.wrapper1', 'bounceOutDown');
+     animateCSS('.wrapper2', 'bounceOutDown');
+      animateCSS('.wrapper3', 'bounceOutDown');
+       animateCSS('.wrapper4', 'bounceOutDown');
+        animateCSS('.wrapper5', 'bounceOutDown');
+        document.getElementById("clients1").style.display = "block";
+         animateCSS('.wrapper0', 'flipInY');
+
+        var b =  document.getElementById("openme");
+          var c =  document.getElementById("zxy");
+        setTimeout(() => {
+         b.style.display = 'none';
+         c.style.display = 'none';
+
+       }, 700);
+
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1500, 'easeInOutExpo');
+    return false;
+
+    delete animateCSS.element;
+    delete animateCSS.animation;
+    delete animateCSS.prefix;
+    delete animateCSS1.element;
+    delete animateCSS1.animation;
+    delete animateCSS1.prefix;
+
+  });
+
 const intro = document.querySelector(".intro");
 const video = intro.querySelector("video");
 const text = intro.querySelector("h1");
@@ -20,11 +98,27 @@ var beepOne2 = $("#beep2")[0];
 var beepOne3 = $("#beep3")[0];
 var beepOne4 = $("#beep4")[0];
 var beepOne5 = $("#beep5")[0];
-$(".wrapper").click(function(){
+
+$(".wrapper0").click(function(){
 beepOne.play();
-document.getElementById("openme").style.display = "block";
-const m = document.querySelector('.wrapper');
-m.classList.add('animate__animated', 'animate__flipOutY');
+
+  animateCSS('.wrapper0', 'flipOutY');
+  animateCSS('.zx', 'fadeInDown');
+   animateCSS1('.wrapper1', 'bounceInUp');
+    animateCSS1('.wrapper2', 'bounceInUp');
+     animateCSS1('.wrapper3', 'bounceInUp');
+      animateCSS1('.wrapper4', 'bounceInUp');
+       animateCSS1('.wrapper5', 'bounceInUp');
+
+       document.getElementById("openme").style.display = "block";
+       document.getElementById("zxy").style.display = "block";
+
+var a =  document.getElementById("clients1");
+
+setTimeout(() => {
+ a.style.display = 'none';
+}, 750);
+
 });
 $(".wrapper1").mouseenter(function(){beepOne1.play();});
 $(".wrapper2").mouseenter(function(){beepOne2.play();});
@@ -156,44 +250,6 @@ $(window).resize(scrollMagic);
   } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
     $(".mobile-nav, .mobile-nav-toggle").hide();
   }
-
-  // Back to top button
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
-    } else {
-      $('.back-to-top').fadeOut('slow');
-    }
-  });
-
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 1500, 'easeInOutExpo');
-    return false;
-  });
-
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-    });
-
-    // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
-    });
-  });
 
   // Initi AOS
   AOS.init({
