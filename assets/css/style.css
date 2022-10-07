@@ -10,22 +10,17 @@ display: inline;
 body {background-color: black;}
 
 .intro {
-  height: 100vh;
+  margin-left: auto;
+   margin-right: auto;
+   max-width: 100%;
+ width: 100%;
+background: #000000;
 }
 
 .intro video {
   height: 100%;
   width: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-.intro h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 80px;
-  color: white;
+  height:100vh;
 }
 
 .wrapper {
@@ -35,7 +30,7 @@ justify-content: center;
 
 .cta {
 display: flex;
-padding: 10px 45px;
+padding: 10px 25px;
 text-decoration: none;
 font-family: 'Fredoka One', sans-serif;
 font-size: 20px;
@@ -70,7 +65,7 @@ transform: skewX(15deg);
 color: white;
 }
 
-.margin {margin: 20px;}
+.margin {margin: 10px; margin-bottom: 30px;}
 
 span:nth-child(2) {
 width: 20px;
@@ -137,9 +132,38 @@ transition: display 0.5s ease-in-out;
 z-index: 99999;
 transition: all ease-in-out 0.3s;
 }
-.zx {display: none;}
+
+.back-to-top2 {
+position: fixed;
+
+width: 40px;
+height: 40px;
+border-radius: 50px;
+right: 65px;
+bottom: 15px;
+background: #284864;
+color: #fff;
+transition: display 0.5s ease-in-out;
+z-index: 99999;
+transition: all ease-in-out 0.3s;
+}
+
+.zx {display: none;
+  position: absolute;
+
+
+  z-index: 1;
+
+}
+.container {padding: 10; margin: 10;}
 
 .back-to-top i {
+font-size: 24px;
+position: absolute;
+top: 4px;
+left: 8px;
+}
+.back-to-top2 i {
 font-size: 24px;
 position: absolute;
 top: 4px;
@@ -155,6 +179,7 @@ background: #fdc134;
 
 /*--------------------------------------------------------------
 # Sections General
+
 --------------------------------------------------------------*/
 section {display:none;}
 .wrapper1 {

@@ -82,6 +82,19 @@ animateCSS('.zx', 'fadeOutUp');
 
   });
 
+  document.getElementById("xa").addEventListener("click", function (e) {
+      var target = e.target;
+target.classList.toggle("icofont-audio");
+target.classList.toggle("icofont-ui-mute");
+togglePlay()
+  }, false);
+
+  var myAudio = document.getElementById("beep");
+
+  function togglePlay() {
+    return myAudio.paused ? myAudio.play() : myAudio.pause();
+  };
+
 const intro = document.querySelector(".intro");
 const video = intro.querySelector("video");
 const text = intro.querySelector("h1");
