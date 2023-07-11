@@ -50,6 +50,13 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     }
   });
 
+  $(document).ready(function() { 
+    $('html, body').animate({
+      scrollTop: 0
+    }, 0, 'easeInOutExpo');
+    return false;
+  });
+
   $('.back-to-top').click(function() {
 animateCSS('.zx', 'fadeOutUp');
     animateCSS('.wrapper1', 'bounceOutDown');
@@ -70,7 +77,7 @@ animateCSS('.zx', 'fadeOutUp');
 
     $('html, body').animate({
       scrollTop: 0
-    }, 1500, 'easeInOutExpo');
+    }, 300, 'easeInOutExpo');
     return false;
 
     delete animateCSS.element;
@@ -131,6 +138,11 @@ var a =  document.getElementById("clients1");
 setTimeout(() => {
  a.style.display = 'none';
 }, 750);
+
+$('html, body').animate({
+  scrollTop: 6300
+}, 500, 'easeOutExpo');
+
 
 });
 $(".wrapper1").mouseenter(function(){beepOne1.play();});

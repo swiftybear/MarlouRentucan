@@ -218,3 +218,25 @@ z-index: 99999;
 left: 0;
 right: 0;
 }
+
+.motionless__banner {
+  display: none; /* hides the banner when animations are enabled */
+  margin-bottom: 1rem;
+  width: 100%;
+  padding: .5rem 1rem;
+
+  background: #333;
+  color: #fff;
+  border-top: 2px solid #ff5722;
+}
+
+.motionless__paragraph {
+  margin-bottom: 0;
+}
+
+/* Show the banner if the user disables animations in the OS level */
+@media (print), (prefers-reduced-motion: reduce) {
+  .motionless__banner {
+    display: block;
+  }
+}
