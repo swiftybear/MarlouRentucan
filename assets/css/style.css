@@ -253,3 +253,29 @@ right: 0;
     display: block;
   }
 }
+
+@media (max-width: 768px) {
+  .cta {
+    padding: 8px 20px; /* Decrease padding for smaller screens */
+    font-size: 16px; /* Reduce font size */
+    box-shadow: 4px 4px 0 black; /* Smaller shadow for better fit */
+  
+    margin-bottom: 15px; /* Add spacing between buttons */
+  }
+
+  .cta span:nth-child(2) {
+    margin-right: 20px; /* Adjust arrow spacing */
+  }
+
+  /* SVG adjustments for mobile */
+  svg {
+    width: 40px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons */
+  } }
