@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Fredoka+One');
-
+.scroll-message {
+  position: fixed;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  z-index: 1000;
+}
+.scroll-message.hidden {
+  display: none;
+}
 
 .img-header{
 height: 100px;

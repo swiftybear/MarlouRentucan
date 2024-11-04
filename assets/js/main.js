@@ -4,7 +4,14 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */  // Back to top button
-
+window.addEventListener('scroll', function() {
+  const scrollMessage = document.getElementById('scrollMessage');
+  if (window.scrollY > 50) { // Adjust scroll threshold as needed
+    scrollMessage.classList.add('hidden');
+  } else {
+    scrollMessage.classList.remove('hidden');
+  }
+});
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
   // We create a Promise and return it
