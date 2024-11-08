@@ -255,12 +255,19 @@ right: 0;
 }
 
 @media (max-width: 768px) {
+  
   .cta {
     padding: 8px 20px; /* Decrease padding for smaller screens */
     font-size: 16px; /* Reduce font size */
     box-shadow: 4px 4px 0 black; /* Smaller shadow for better fit */
   
     margin-bottom: 15px; /* Add spacing between buttons */
+  }
+  .cta-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column grid */
+    gap: 10px; /* Space between buttons */
+    margin: 10px;
   }
 
   .cta span:nth-child(2) {
