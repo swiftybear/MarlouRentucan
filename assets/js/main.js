@@ -4,6 +4,43 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */  // Back to top button
+document.addEventListener("DOMContentLoaded", function () {
+  const preloader = document.getElementById("preloader");
+  const percentageText = document.querySelector(".percentage");
+  const buttonas = document.getElementById("clients1");
+  const buttonas1 = document.getElementById("xa");
+  let progress = 0;
+
+
+  buttonas.disabled = true;
+  buttonas1.disabled = true;
+  buttonas.style.display = "none";
+
+  // Simulate loading progress
+  const loadingInterval = setInterval(() => {
+      progress += Math.random() * 10; // Simulate random loading speed
+      if (progress >= 100) {
+          progress = 100; // Cap at 100%
+          clearInterval(loadingInterval); // Stop the interval
+          preloader.style.opacity = "0"; // Fade out effect
+          setTimeout(() => {
+              preloader.style.display = "none"; // Remove preloader
+              buttonas.disabled = false; // Re-enable the button
+              buttonas.style.display = "inline-block"; // Show the button
+
+              buttonas1.disabled = false; // Re-enable the button
+              buttonas1.style.display = "inline-block"; // Show the button
+
+          }, 500); // Adjust timing to match fade-out
+      }
+      percentageText.textContent = `${Math.floor(progress)}%`; // Update percentage
+  }, 100); // Update every 100ms
+});
+
+
+
+
+
 window.addEventListener('scroll', function() {
   const scrollMessage = document.getElementById('scrollMessage');
   if (window.scrollY > 50) { // Adjust scroll threshold as needed
