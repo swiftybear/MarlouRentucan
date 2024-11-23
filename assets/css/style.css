@@ -14,6 +14,36 @@
   display: none;
 }
 
+body, html, #app {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  overflow: hidden;
+  touch-action: pan-up;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  text-shadow: 0 0 5px #ffffff, 0 0 20px #000, 0 0 30px #000;
+}
+
+
+#app a {
+  margin-top: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+}
+
+#app canvas {
+  display: block;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+}
+
 .img-header{
 height: 100px;
 width: 350px;
@@ -30,10 +60,33 @@ body {background-color: black;}
 background: #000000;
 }
 
-.intro video {
-  height: 100%;
-  width: 100%;
-  height:100vh;
+.copyright {
+  position: fixed;
+  bottom: 2px; /* Slight offset to avoid screen edges */
+  left: 2px; /* Slight offset to avoid screen edges */
+  font-size: 10px; /* Small but readable */
+  color: white;
+  z-index: 9999; /* Ensures it stays above all elements */
+  background-color: rgba(0, 0, 0, 0.3); /* Optional: faint background for readability */
+  padding: 2px 4px; /* Optional: small padding for better visibility */
+  border-radius: 2px; /* Optional: rounded edges for subtle styling */
+}
+
+.copyright a {
+  color: white; /* Keeps the text white */
+  text-decoration: none; /* Removes underline */
+}
+
+.copyright a:visited {
+  color: white; /* Keeps the text white after the link is visited */
+}
+
+.copyright a:hover {
+  text-decoration: underline; /* Optional: underline on hover for accessibility */
+}
+
+.copyright a:active {
+  color: white; /* Ensures text stays white during interaction */
 }
 
 .wrapper {

@@ -13,6 +13,9 @@ window.addEventListener('scroll', function() {
   }
 });
 
+
+
+
 const animateCSS = (element, animation, prefix = 'animate__') =>
   // We create a Promise and return it
   new Promise((resolve, reject) => {
@@ -174,45 +177,243 @@ var audio = document.getElementById("beep");
 
 
 //Scenes
-let scene = new ScrollMagic.Scene({
-  duration: 8000,
-  triggerElement: intro,
-  triggerHook: 0
+	// define images
+	var images = [
+		
+		"ST1/Z18001-min.webp",
+    "ST1/Z18002-min.webp",
+    "ST1/Z18003-min.webp",
+    "ST1/Z18004-min.webp",
+    "ST1/Z18005-min.webp",
+    "ST1/Z18006-min.webp",
+    "ST1/Z18007-min.webp",
+    "ST1/Z18008-min.webp",
+    "ST1/Z18009-min.webp",
+    "ST1/Z18010-min.webp",
+    "ST1/Z18011-min.webp",
+    "ST1/Z18012-min.webp",
+    "ST1/Z18013-min.webp",
+    "ST1/Z18014-min.webp",
+    "ST1/Z18015-min.webp",
+    "ST1/Z18016-min.webp",
+    "ST1/Z18017-min.webp",
+    "ST1/Z18018-min.webp",
+    "ST1/Z18019-min.webp",
+    "ST1/Z18020-min.webp",
+    "ST1/Z18021-min.webp",
+    "ST1/Z18022-min.webp",
+    "ST1/Z18023-min.webp",
+    "ST1/Z18024-min.webp",
+    "ST1/Z18025-min.webp",
+    "ST1/Z18026-min.webp",
+    "ST1/Z18027-min.webp",
+    "ST1/Z18028-min.webp",
+    "ST1/Z18029-min.webp",
+    "ST1/Z18030-min.webp",
+    "ST1/Z18031-min.webp",
+    "ST1/Z18032-min.webp",
+    "ST1/Z18033-min.webp",
+    "ST1/Z18034-min.webp",
+    "ST1/Z18035-min.webp",
+    "ST1/Z18036-min.webp",
+    "ST1/Z18037-min.webp",
+    "ST1/Z18038-min.webp",
+    "ST1/Z18039-min.webp",
+    "ST1/Z18040-min.webp",
+    "ST1/Z18041-min.webp",
+    "ST1/Z18042-min.webp",
+    "ST1/Z18043-min.webp",
+    "ST1/Z18044-min.webp",
+    "ST1/Z18045-min.webp",
+    "ST1/Z18046-min.webp",
+    "ST1/Z18047-min.webp",
+    "ST1/Z18048-min.webp",
+    "ST1/Z18049-min.webp",
+    "ST1/Z18050-min.webp",
+    "ST1/Z18051-min.webp",
+    "ST1/Z18052-min.webp",
+    "ST1/Z18053-min.webp",
+    "ST1/Z18054-min.webp",
+    "ST1/Z18055-min.webp",
+    "ST1/Z18056-min.webp",
+    "ST1/Z18057-min.webp",
+    "ST1/Z18058-min.webp",
+    "ST1/Z18059-min.webp",
+    "ST1/Z18060-min.webp",
+    "ST1/Z18062-min.webp",
+    "ST1/Z18063-min.webp",
+    "ST1/Z18064-min.webp",
+    "ST1/Z18065-min.webp",
+    "ST1/Z18066-min.webp",
+    "ST1/Z18067-min.webp",
+    "ST1/Z18068-min.webp",
+    "ST1/Z18069-min.webp",
+    "ST1/Z18070-min.webp",
+    "ST1/Z18071-min.webp",
+    "ST1/Z18072-min.webp",
+    "ST1/Z18073-min.webp",
+    "ST1/Z18074-min.webp",
+    "ST1/Z18075-min.webp",
+    "ST1/Z18076-min.webp",
+    "ST1/Z18077-min.webp",
+    "ST1/Z18078-min.webp",
+    "ST1/Z18079-min.webp",
+    "ST1/Z18080-min.webp",
+    "ST1/Z18081-min.webp",
+    "ST1/Z18082-min.webp",
+    "ST1/Z18083-min.webp",
+    "ST1/Z18084-min.webp",
+    "ST1/Z18085-min.webp",
+    "ST1/Z18086-min.webp",
+    "ST1/Z18087-min.webp",
+    "ST1/Z18088-min.webp",
+    "ST1/Z18089-min.webp",
+    "ST1/Z18090-min.webp",
+    "ST1/Z18091-min.webp",
+    "ST1/Z18092-min.webp",
+    "ST1/Z18093-min.webp",
+    "ST1/Z18094-min.webp",
+    "ST1/Z18095-min.webp",
+    "ST1/Z18096-min.webp",
+    "ST1/Z18097-min.webp",
+    "ST1/Z18098-min.webp",
+    "ST1/Z18099-min.webp",
+    "ST1/Z18100-min.webp",
+           "ST1/Z18100-min.webp",
+		"ST1/Z18101-min.webp",
+    "ST1/Z18102-min.webp",
+    "ST1/Z18103-min.webp",
+    "ST1/Z18104-min.webp",
+    "ST1/Z18105-min.webp",
+    "ST1/Z18106-min.webp",
+    "ST1/Z18107-min.webp",
+    "ST1/Z18108-min.webp",
+    "ST1/Z18109-min.webp",
+    "ST1/Z18110-min.webp",
+    "ST1/Z18111-min.webp",
+    "ST1/Z18112-min.webp",
+    "ST1/Z18113-min.webp",
+    "ST1/Z18114-min.webp",
+    "ST1/Z18115-min.webp",
+    "ST1/Z18116-min.webp",
+    "ST1/Z18117-min.webp",
+    "ST1/Z18118-min.webp",
+    "ST1/Z18119-min.webp",
+    "ST1/Z18120-min.webp",
+    "ST1/Z18121-min.webp",
+    "ST1/Z18122-min.webp",
+    "ST1/Z18123-min.webp",
+    "ST1/Z18124-min.webp",
+    "ST1/Z18125-min.webp",
+    "ST1/Z18126-min.webp",
+    "ST1/Z18127-min.webp",
+    "ST1/Z18128-min.webp",
+    "ST1/Z18129-min.webp",
+    "ST1/Z18130-min.webp",
+    "ST1/Z18131-min.webp",
+    "ST1/Z18132-min.webp",
+    "ST1/Z18133-min.webp",
+    "ST1/Z18134-min.webp",
+    "ST1/Z18135-min.webp",
+    "ST1/Z18136-min.webp",
+    "ST1/Z18137-min.webp",
+    "ST1/Z18138-min.webp",
+    "ST1/Z18139-min.webp",
+    "ST1/Z18140-min.webp",
+    "ST1/Z18141-min.webp",
+    "ST1/Z18142-min.webp",
+    "ST1/Z18143-min.webp",
+    "ST1/Z18144-min.webp",
+    "ST1/Z18145-min.webp",
+    "ST1/Z18146-min.webp",
+    "ST1/Z18147-min.webp",
+    "ST1/Z18148-min.webp",
+    "ST1/Z18149-min.webp",
+    "ST1/Z18150-min.webp",
+    "ST1/Z18151-min.webp",
+    "ST1/Z18152-min.webp",
+    "ST1/Z18153-min.webp",
+    "ST1/Z18154-min.webp",
+    "ST1/Z18155-min.webp",
+    "ST1/Z18156-min.webp",
+    "ST1/Z18157-min.webp",
+    "ST1/Z18158-min.webp",
+    "ST1/Z18159-min.webp",
+    "ST1/Z18160-min.webp",
+    "ST1/Z18161-min.webp",
+    "ST1/Z18162-min.webp",
+    "ST1/Z18163-min.webp",
+    "ST1/Z18164-min.webp",
+    "ST1/Z18165-min.webp",
+    "ST1/Z18166-min.webp",
+    "ST1/Z18167-min.webp",
+    "ST1/Z18168-min.webp",
+    "ST1/Z18169-min.webp",
+    "ST1/Z18170-min.webp",
+    "ST1/Z18171-min.webp",
+    "ST1/Z18172-min.webp",
+    "ST1/Z18173-min.webp",
+    "ST1/Z18174-min.webp",
+    "ST1/Z18175-min.webp",
+    "ST1/Z18176-min.webp",
+    "ST1/Z18177-min.webp",
+    "ST1/Z18178-min.webp",
+    "ST1/Z18179-min.webp",
+    "ST1/Z18180-min.webp",
+    "ST1/Z18181-min.webp",
+    "ST1/Z18182-min.webp",
+    "ST1/Z18183-min.webp",
+    "ST1/Z18184-min.webp",
+    "ST1/Z18185-min.webp",
+    "ST1/Z18186-min.webp",
+    "ST1/Z18187-min.webp",
+    "ST1/Z18188-min.webp",
+    "ST1/Z18189-min.webp",
+    "ST1/Z18190-min.webp",
+    "ST1/Z18191-min.webp",
+    "ST1/Z18192-min.webp",
+    "ST1/Z18193-min.webp",
+    "ST1/Z18194-min.webp",
+
+
+	];
+
+	// TweenMax can tween any property of any object. We use this object to cycle through the array
+	var obj = {curImg: 0};
+
+	// create tween
+	var tween = TweenMax.to(obj, 0.5,
+		{
+			curImg: images.length - 1,	// animate propery curImg to number of images
+			roundProps: "curImg",				// only integers so it can be used as an array index
+			repeat: 0,									// repeat 3 times
+			immediateRender: true,			// load first image automatically
+			ease: Linear.easeNone,			// show every image the same ammount of time
+			onUpdate: function () {
+			  $("#myimg").attr("src", images[obj.curImg]); // set the image source
+			}
+		}
+	);
+
+	// init controller
+
+
+	// build scene
+	var scene = new ScrollMagic.Scene({
+    triggerElement: intro, 
+    duration: 8000,
+    triggerHook: 0
+  
 })
-// .addIndicators() //remove to remove indicators
-  .setPin(intro)
-  .addTo(controller);
+					.setTween(tween)
+          .setPin(intro)
+					//.addIndicators() // add indicators (requires plugin)
+					.addTo(controller);
 
-
-//Text Animation
-//const textAnim = TweenMax.fromTo(text, 3, { opacity: 1 }, { opacity: 0 });
-
-//let scene2 = new ScrollMagic.Scene({
-//  duration: 3000,
-//  triggerElement: intro,
-//  triggerHook: 0
-//})
-//  .setTween(textAnim)
-//  .addTo(controller);
-
-//Video Animation
-let accelamount = .1;
-let scrollpos = 0;
-let delay = 0;
-
-scene.on("update", e => {
-  scrollpos = e.scrollPos / 1000;
-});
-
-setInterval(() => {
-  delay += (scrollpos - delay) * accelamount;
-  console.log(scrollpos, delay);
-
-  video.currentTime = delay;
-}, 41.6);
-
-scrollMagic();
-$(window).resize(scrollMagic);
+	// handle form change
+	$("form.move input[name=duration]:radio").change(function () {
+		scene.duration($(this).val());
+	});
 /////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////
