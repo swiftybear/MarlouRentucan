@@ -232,7 +232,7 @@ function preloadImages(imageArray) {
         }, 5000); // Change text after 10 seconds
 
         setTimeout(() => {
-            loadingTextElement.textContent = "Almost there... <br>u really need to upgrade your internet";
+            loadingTextElement.innerHTML = "Almost there... <br>u really need to upgrade your internet";
         }, 10000); // Change text after 20 seconds
 
         setTimeout(() => {
@@ -240,24 +240,24 @@ function preloadImages(imageArray) {
       }, 15000); // Change text after 20 seconds
 
       setTimeout(() => {
-        loadingTextElement.textContent = "if u went this far... <br>i bet ur internet is PLDT";
+        loadingTextElement.innerHTML = "if u went this far... <br>i bet ur internet is PLDT";
     }, 20000); // Change text after 20 seconds
 
     setTimeout(() => {
       loadingTextElement.textContent = "seriously?";
-  }, 25000); // Change text after 20 seconds
+  }, 30000); // Change text after 20 seconds
 
   setTimeout(() => {
-    loadingTextElement.textContent = "nah u gotta be testin my site <br>slowing down bandwith network stuff<br> as for that case, this is the last message";
-}, 35000); // Change text after 20 seconds
-
-setTimeout(() => {
-  loadingTextElement.textContent = "ok send 'H7u#87rw!' to +639167756497 <br>for further instructions";
+    loadingTextElement.innerHTML = "nah u gotta be testin my site <br>slowing down bandwith network stuff<br> as for that case, this is the last message";
 }, 45000); // Change text after 20 seconds
 
 setTimeout(() => {
+  loadingTextElement.innerHTML = "ok send 'H7u#87rw!' to +639167756497 <br>for further instructions";
+}, 80000); // Change text after 20 seconds
+
+setTimeout(() => {
   loadingTextElement.textContent = "still here? hahahha byee";
-}, 65000); // Change text after 20 seconds
+}, 90000); // Change text after 20 seconds
 
       // Load each image
       imageArray.forEach((src) => {
