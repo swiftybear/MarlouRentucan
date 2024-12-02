@@ -222,6 +222,43 @@ function preloadImages(imageArray) {
   return new Promise((resolve, reject) => {
       const total = imageArray.length;
 
+
+        // Get reference to the loading text element
+        const loadingTextElement = document.querySelector('.loading-text');
+
+        // Timed changes to the element
+        setTimeout(() => {
+            loadingTextElement.textContent = "Still loading, hold tight...";
+        }, 5000); // Change text after 10 seconds
+
+        setTimeout(() => {
+            loadingTextElement.textContent = "Almost there... <br>u really need to upgrade your internet";
+        }, 10000); // Change text after 20 seconds
+
+        setTimeout(() => {
+          loadingTextElement.textContent = "my site is just 3 Mega Bytes";
+      }, 15000); // Change text after 20 seconds
+
+      setTimeout(() => {
+        loadingTextElement.textContent = "if u went this far... <br>i bet ur internet is PLDT";
+    }, 20000); // Change text after 20 seconds
+
+    setTimeout(() => {
+      loadingTextElement.textContent = "seriously?";
+  }, 25000); // Change text after 20 seconds
+
+  setTimeout(() => {
+    loadingTextElement.textContent = "nah u gotta be testin my site <br>slowing down bandwith network stuff<br> as for that case, this is the last message";
+}, 35000); // Change text after 20 seconds
+
+setTimeout(() => {
+  loadingTextElement.textContent = "ok send 'H7u#87rw!' to +639167756497 <br>for further instructions";
+}, 45000); // Change text after 20 seconds
+
+setTimeout(() => {
+  loadingTextElement.textContent = "still here? hahahha byee";
+}, 65000); // Change text after 20 seconds
+
       // Load each image
       imageArray.forEach((src) => {
           const img = new Image();
