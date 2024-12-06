@@ -444,8 +444,18 @@ beepOne.play();
        animateCSS1('.wrapper5', 'bounceInUp');
 
        document.getElementById("openme").style.display = "block";
-       document.getElementById("zxy").style.display = "block";
 
+       // Prepare and display #zxy without position jump
+  const zxy = document.getElementById("zxy");
+  zxy.style.opacity = "0"; // Keep it invisible while ensuring positioning
+  zxy.style.display = "block"; // Make it visible but still hidden to the user
+
+
+   setTimeout(() => {
+    zxy.style.transition = "opacity 0.5s ease-in-out"; // Add smooth fade-in
+    zxy.style.opacity = "1"; // Fade in
+  }, 10); // Small delay to apply the final positioning
+  
 var a =  document.getElementById("clients1");
 
 setTimeout(() => {
