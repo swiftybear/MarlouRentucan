@@ -301,7 +301,7 @@ transform: skewX(15deg);
 color: white;
 }
 
-.margin {margin: 10px; margin-bottom: 30px;}
+.margin {margin: 10px; margin-bottom:30px;}
 
 span:nth-child(2) {
 width: 20px;
@@ -482,7 +482,8 @@ right: 0;
 }
 
 @media (max-width: 768px) {
-  
+   
+
   .cta {
     padding: 8px 20px; /* Decrease padding for smaller screens */
     font-size: 16px; /* Reduce font size */
@@ -500,12 +501,12 @@ right: 0;
   
   #myimg {
     position: absolute; /* Makes it positioned relative to its nearest positioned ancestor */
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%); /* Centers it vertically and horizontally */
     max-width: 100%; /* Maintains responsiveness */
   }
-
+  .margin {margin: 10px; margin-bottom:0px;}
   #hero {
     position: relative;
     height: 100vh; /* Fills the viewport height for proper centering */
