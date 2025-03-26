@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form with Animated Lock</title>
+  <link rel="stylesheet" href="laoding.css">
+</head>
+<body>
+  <div class="container">
+    <form id="loginForm">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        pattern="password123"
+        placeholder="Enter your password"
+        required
+        title="Wasn't your password 'password123'? 🤫"
+      />
+      <button type="submit" id="submit">
+        <span>Enter</span>
+      </button>
+    </form>
+
+    <div class="padlock">
+      <div class="padlock__hook">
+        <div class="padlock__hook-body"></div>
+        <div class="padlock__hook-body"></div>
+      </div>
+      <div class="padlock__body">
+        <div class="padlock__face">
+          <div class="padlock__eye padlock__eye--left"></div>
+          <div class="padlock__eye padlock__eye--right"></div>
+          <div class="padlock__mouth padlock__mouth--one"></div>
+          <div class="padlock__mouth padlock__mouth--two"></div>
+          <div class="padlock__mouth padlock__mouth--three"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      <h1>You logged in! 🎉</h1>
+      <button class="logout-button" type="reset">Logout</button>
+    </div>
+    <span class="logout-message">You have logged out.</span>
+  </div>
+
+  <script src="laoding.js"></script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --transition: 0.2s;
+  --bg-one: hsl(280, 60%, 5%);
+  --bg-two: hsl(280, 90%, 15%);
+  --stop: 40%;
+  --angle: 45deg;
+  --border-width: 5px;
+  --padlock-size: 300px;
+  --border-radius: 6px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: sans-serif;
+  background: linear-gradient(var(--angle), var(--bg-one) var(--stop), var(--bg-two) var(--stop));
+}
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
+  justify-items: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 0.5rem;
+  justify-items: center;
+  position: relative;
+}
+
+input[type="password"] {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: var(--border-width) solid var(--accent);
+  border-radius: var(--border-radius);
+  text-align: center;
+  outline: transparent;
+  width: 100%;
+  transition: border-color var(--transition) ease;
+}
+
+input[type="password"]:valid {
+  --accent: hsl(100, 100%, 50%, 1);
+}
+
+input[type="password"]:invalid {
+  --accent: hsl(10, 100%, 50%, 0.5);
+}
+
+input[type="password"]:placeholder-shown {
+  --accent: hsl(0, 0%, 100%);
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  background: hsl(100, 80%, 45%);
+  color: #fff;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+}
+
+button:hover {
+  background: hsl(100, 80%, 30%);
+}
+
+button:active {
+  background: hsl(100, 80%, 20%);
+}
+
+.padlock {
+  position: relative;
+  width: var(--padlock-size);
+  height: var(--padlock-size);
+}
+
+.padlock__hook {
+  width: 50%;
+  height: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -40%);
+  clip-path: inset(0 0 30% 0);
+}
+
+.padlock__body {
+  width: 66%;
+  height: 46%;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: hsl(50, 100%, 50%);
+  border: 8px solid black;
+  border-radius: 20px;
+  box-shadow: inset -30px 0 hsl(38, 100%, 50%), inset 10px 0 white;
+}
+
+.padlock__face {
+  position: absolute;
+  width: 40%;
+  height: 25%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.padlock__eye {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: black;
+  border-radius: 50%;
+  top: 0;
+}
+
+.padlock__eye--left {
+  left: 0;
+}
+
+.padlock__eye--right {
+  right: 0;
+}
+
+.padlock__mouth {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.padlock__mouth--one {
+  background: black;
+  height: 5px;
+  width: 40%;
+}
+
+.padlock__mouth--two {
+  display: none;
+}
+
+.padlock__mouth--three {
+  display: none;
+  background: black;
+}
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: hsla(0, 0%, 95%, 1);
+  transform: scale(var(--scale, 0));
+  transition: transform var(--transition) ease;
+}
+
+.logout-button {
+  padding: 12px 20px;
+  background: hsl(10, 80%, 45%);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: hsl(10, 80%, 30%);
+}
+
+.logout-message {
+  display: none;
+}
