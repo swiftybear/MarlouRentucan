@@ -1,4 +1,4 @@
-import { neonCursor } from 'threejs-toys-module-min.js'
+import { neonCursor } from '/threejs-toys-module-min.js'
 
 neonCursor({
   el: document.getElementById('app'),
