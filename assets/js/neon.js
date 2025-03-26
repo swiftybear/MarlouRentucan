@@ -1,4 +1,4 @@
-import { neonCursor } from '/assets/js/threejs-toys-module-min.js'
+import { neonCursor } from 'https://swiftybear.github.io/MarlouRentucan/assets/js/threejs-toys-module-min.js'
 
 neonCursor({
   el: document.getElementById('app'),
