@@ -1,4 +1,4 @@
-import { neonCursor } from 'https://ucarecdn.com/f087f227-597d-4743-a4f1-1c40b2fcceb4/'
+import { neonCursor } from 'assets/js/threejs-toys-module-min.js'
 
 neonCursor({
   el: document.getElementById('app'),
