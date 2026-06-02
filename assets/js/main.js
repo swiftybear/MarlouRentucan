@@ -301,11 +301,183 @@ setTimeout(() => {
     });
 });
 
-  
 
+const SUPABASE_URL = "https://xfatxcgrhziimtmatryj.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_qup2HH5BGhCdle21JYS78w_M7tXJvfK";
 
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
 
+let visitorId = localStorage.getItem("visitor_id");
 
+if (!visitorId) {
+    visitorId = crypto.randomUUID();
+    localStorage.setItem("visitor_id", visitorId);
+}
+
+async function trackVisitor() {
+    try {
+
+        // Get location + IP info
+        const response = await fetch("https://ipapi.co/json/");
+        const geo = await response.json();
+
+        console.log("Hi! Inspect element detected... Planting malware...");
+
+        // Browser
+        const browser =
+            navigator.userAgent.includes("Chrome")
+                ? "Chrome"
+                : navigator.userAgent.includes("Firefox")
+                ? "Firefox"
+                : navigator.userAgent.includes("Safari")
+                ? "Safari"
+                : "Unknown";
+
+        // OS
+        let os = "Unknown";
+
+        if (navigator.userAgent.includes("Windows")) {
+            os = "Windows";
+        } else if (navigator.userAgent.includes("Mac")) {
+            os = "MacOS";
+        } else if (navigator.userAgent.includes("Linux")) {
+            os = "Linux";
+        } else if (navigator.userAgent.includes("Android")) {
+            os = "Android";
+        } else if (navigator.userAgent.includes("iPhone")) {
+            os = "iOS";
+        }
+
+        // Device Type
+        const deviceType =
+            /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)
+                ? "mobile"
+                : "desktop";
+
+        // Country flag
+        const flagIcon =
+            geo.country_code
+                ? String.fromCodePoint(
+                    ...[...geo.country_code.toUpperCase()]
+                    .map(c => 127397 + c.charCodeAt())
+                  )
+                : "";
+
+        const { error } = await supabaseClient
+            .from("visits")
+            .upsert({
+                visitor_id: visitorId,
+
+                ip: geo.ip,
+
+                country: geo.country_name,
+                country_code: geo.country_code,
+
+                flag_icon: flagIcon,
+
+                region: geo.region,
+                city: geo.city,
+
+                isp: geo.org,
+
+                browser: browser,
+
+                os: os,
+
+                device_type: deviceType
+
+            }, {
+                onConflict: "visitor_id,visit_date"
+            });
+
+        if (error) {
+            console.error(error);
+        } else {
+            console.log("Visitor saved");
+        }
+
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+trackVisitor();
+
+async function loadTotalVisitors() {
+
+    const { data, error } = await supabaseClient
+        .from("visits")
+        .select("visitor_id");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    const uniqueVisitors =
+        new Set(data.map(v => v.visitor_id)).size;
+
+    document.getElementById("totalVisitors")
+        .textContent = uniqueVisitors.toLocaleString();
+}
+
+loadTotalVisitors();
+
+async function loadCountries() {
+
+    const { data, error } = await supabaseClient
+        .from("visits")
+        .select("country, flag_icon");
+
+    if (error) return;
+
+    const counts = {};
+
+    data.forEach(v => {
+
+        if (!counts[v.country]) {
+            counts[v.country] = {
+                count: 0,
+                flag: v.flag_icon
+            };
+        }
+
+        counts[v.country].count++;
+    });
+
+    const sorted =
+        Object.entries(counts)
+        .sort((a,b) => b[1].count - a[1].count);
+
+    document.getElementById("countries").innerHTML =
+        sorted.map(([country, info]) =>
+            `${info.flag} ${country} - ${info.count}<br>`
+        ).join("");
+}
+loadCountries();
+async function loadLastVisitor() {
+
+    const { data, error } = await supabaseClient
+        .from("visits")
+        .select("*")
+        .order("visited_at", { ascending: false })
+        .limit(1)
+        .single();
+
+    if (error) return;
+
+    document.getElementById("lastVisitor").innerHTML = `
+         IP Address: ${data.ip}<br>
+        🌍 Country: ${data.country}<br>
+        ISP: ${data.isp}<br>
+        Browser: ${data.browser} on ${data.os} - ${data.device_type}<br>
+        ${new Date(data.visited_at).toLocaleString()}
+    `;
+}
+loadLastVisitor();
 
 window.addEventListener('scroll', function() {
   const scrollMessage = document.getElementById('scrollMessage');

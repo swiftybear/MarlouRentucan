@@ -228,6 +228,7 @@ background: #000000;
   background-color: rgba(0, 0, 0, 0.3); /* Optional: faint background for readability */
   padding: 2px 4px; /* Optional: small padding for better visibility */
   border-radius: 2px; /* Optional: rounded edges for subtle styling */
+  pointer-events: none;
 }
 .copyright a {
   color: white; /* Keeps the text white */
@@ -395,6 +396,11 @@ section {display:none;}
 /*--------------------------------------------------------------
 # Clients
 --------------------------------------------------------------*/
+#lastVisitor {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 .clients {
 position: fixed;
 padding: 0;
