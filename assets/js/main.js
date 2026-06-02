@@ -316,14 +316,14 @@ if (!visitorId) {
     visitorId = crypto.randomUUID();
     localStorage.setItem("visitor_id", visitorId);
 }
-
+let currentVisitor = null;
 async function trackVisitor() {
     try {
 
         // Get location + IP info
         const response = await fetch("https://ipapi.co/json/");
         const geo = await response.json();
-
+currentVisitor = geo;
         console.log("Hi! Inspect element detected... Planting malware...");
 
         // Browser
@@ -468,10 +468,21 @@ async function loadLastVisitor() {
         ${new Date(data.visited_at).toLocaleString()}
     `;
 }
+async function loadCurrentVisitor() {
 
+    if (!currentVisitor) return;
+
+    document.getElementById("currentVisitor").innerHTML = `
+        IP Address: ${currentVisitor.ip}<br>
+        🌍 Country: ${currentVisitor.country_name}<br>
+        ISP: ${currentVisitor.org}<br>
+    `;
+}
 async function init() {
 
     await trackVisitor();
+    
+    await loadCurrentVisitor();
 
     await loadTotalVisitors();
 
