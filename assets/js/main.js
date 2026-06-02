@@ -367,33 +367,26 @@ async function trackVisitor() {
                 : "";
 
         const { error } = await supabaseClient
-            .from("visits")
-            .upsert({
-                visitor_id: visitorId,
+    .from("visits")
+    .insert({
+        visitor_id: visitorId,
+        ip: geo.ip,
+        country: geo.country_name,
+        country_code: geo.country_code,
+        flag_icon: flagIcon,
+        region: geo.region,
+        city: geo.city,
+        isp: geo.org,
+        browser: browser,
+        os: os,
+        device_type: deviceType
+    });
 
-                ip: geo.ip,
-
-                country: geo.country_name,
-                country_code: geo.country_code,
-
-                flag_icon: flagIcon,
-
-                region: geo.region,
-                city: geo.city,
-
-                isp: geo.org,
-
-                browser: browser,
-
-                os: os,
-
-                device_type: deviceType
-
-            }, {
-                onConflict: "visitor_id,visit_date"
-            });
-
-        if (error) {
+        if (error) {// Ignore duplicate visitor for same day
+    if (error.code === "23505") {
+        console.log("Already counted today");
+        return;
+    }
             console.error(error);
         } else {
             console.log("Visitor saved");
@@ -404,7 +397,6 @@ async function trackVisitor() {
     }
 }
 
-trackVisitor();
 
 async function loadTotalVisitors() {
 
@@ -424,7 +416,6 @@ async function loadTotalVisitors() {
         .textContent = uniqueVisitors.toLocaleString();
 }
 
-loadTotalVisitors();
 
 async function loadCountries() {
 
@@ -457,7 +448,7 @@ async function loadCountries() {
             `${info.flag} ${country} - ${info.count}<br>`
         ).join("");
 }
-loadCountries();
+
 async function loadLastVisitor() {
 
     const { data, error } = await supabaseClient
@@ -477,7 +468,19 @@ async function loadLastVisitor() {
         ${new Date(data.visited_at).toLocaleString()}
     `;
 }
-loadLastVisitor();
+
+async function init() {
+
+    await trackVisitor();
+
+    await loadTotalVisitors();
+
+    await loadCountries();
+
+    await loadLastVisitor();
+}
+
+init();
 
 window.addEventListener('scroll', function() {
   const scrollMessage = document.getElementById('scrollMessage');
